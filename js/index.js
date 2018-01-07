@@ -16,8 +16,7 @@ var Leaflet;
 //初始化函数
     function _init(opt){
         this.doc=getDoc(opt.doc);
-        addEvent(this,this.doc,"touchmove",function(currentSelect,that,e){
-        });
+        swipe(this);
         return this;
     }
 //获取doc
@@ -48,7 +47,21 @@ var Leaflet;
 		}
     }
 //滑动手势
-    function swipe(){
-        
+    function swipe(that){
+        var start=end=null;
+        addEvent(that,that.doc,"touchstart",function(currentSelect,that,e){
+            if(e.touches.length===1){
+                start=e.touches[0].clientY;
+            }
+        });
+        addEvent(that,that.doc,"touchmove",function(currentSelect,that,e){
+            if(e.touches.length===1){
+                end=e.touches[0].clientY;
+            }
+        });
+        addEvent(that,that.doc,"touchsend",function(currentSelect,that,e){
+            // 判断手势
+            start=end=null;
+        });
     }
 })(window,document)
