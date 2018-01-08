@@ -156,16 +156,14 @@ var Leaflet;
     }
     //排位
     function ranking(that){
-        // var nextTempEle=document.querySelectorAll(".next");
-        // var prevTempEle=document.querySelectorAll(".prev");
-        // if(nextTempEle.length>0){
-        //     removeArrClass(nextTempEle,"next");
-        // }
-        // if(prevTempEle.length>0){
-        //     removeArrClass(prevTempEle,"prev");
-        // }  
-        removeArrClass(that.pages,"next");
-        removeArrClass(that.pages,"prev");
+        var nextTempEle=document.querySelectorAll(".next");
+        var prevTempEle=document.querySelectorAll(".prev");
+        if(nextTempEle.length>0){
+            removeArrClass(nextTempEle,"next");
+        }
+        if(prevTempEle.length>0){
+            removeArrClass(prevTempEle,"prev");
+        }  
         var current=getDoc(".active"),
         currentIndex=that.pages.indexOf(current),
         next=prev=nextEle=prevEle=null;
