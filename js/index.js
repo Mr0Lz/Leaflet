@@ -42,7 +42,7 @@ var Leaflet;
         this.onSwipeUp=opt.onSwipeUp||function(){};
         this.onSwipeDown=opt.onSwipeDown||function(){};
         swipe(this);
-        return this;
+        if(opt.music){musicInit(opt.music);}
     }
 //获取doc
     function getDoc(ele){
@@ -179,5 +179,12 @@ var Leaflet;
         inserCss(that,".InDown","-webkit-animation: fadeInDown 0.8s;animation: fadeInDown 0.8s;",that.rlueL+1);
         inserCss(that,"@-webkit-keyframes fadeInUp","from {opacity: 0;-webkit-transform: translate3d(0, 100%, 0);transform: translate3d(0, 100%, 0);}to {opacity: 1;-webkit-transform: none;transform: none;}",that.rlueL+1);
         inserCss(that,"@-webkit-keyframes fadeInDown","from {opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0);}to {opacity: 1;-webkit-transform: none;transform: none;}",that.rlueL+1);
+    }
+    //开启背景音乐
+    function musicInit(opt){
+        if(opt.src){
+            
+        }
+        return
     }        
 })(window,document)
