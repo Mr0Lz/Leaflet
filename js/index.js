@@ -2,10 +2,12 @@ var Leaflet;
 !(function(){
     function leaflet(){
         addEvent(this,document,"touchstart",function(current,that,e){
-            preventDefault(e)
+            e.preventDefault();
+            return;
         });
         addEvent(this,document,"touchmove",function(current,that,e){
-            preventDefault(e)
+            e.preventDefault();
+            return;
         });
         this.styleSheet=createStyle();
         this.rlueL=0;
@@ -41,6 +43,7 @@ var Leaflet;
         addArrClass(this.pages,"page");
         this.onSwipeUp=opt.onSwipeUp||function(){};
         this.onSwipeDown=opt.onSwipeDown||function(){};
+        ranking(this);
         swipe(this);
         if(opt.music){musicInit(opt.music);}
     }
@@ -71,15 +74,8 @@ var Leaflet;
                 fn(current,that,e);
             },false);
     }
-//删除事件
-	function removeEvent(eleArr,start,type,fn){
-		for (var i=start; i<eleArr.length;i++) {
-				eleArr[i].removeEventListener(type,fn);
-		}
-    }
 //滑动手势
     function swipe(that){
-        ranking(that);
         var start=end=null;
         addEvent(that,that.doc,"touchstart",function(current,that,e){
             if(e.touches.length===1){start=e.touches[0].clientY;}else{start=null;}
@@ -94,8 +90,14 @@ var Leaflet;
                 //上一页
                 var docs=ranking(that);
                 removeClass(docs.current[0],"active");
-                removeArrClass(that.pages,that.InUp);
-                removeArrClass(that.pages,that.InDown);  
+                var InUpEle=document.querySelectorAll("."+that.InUp);
+                var InDownEle=document.querySelectorAll("."+that.InDown);
+                if(InUpEle.length>0){
+                    removeArrClass(InUpEle,that.InUp);
+                }
+                if(InDownEle.length>0){
+                    removeArrClass(InDownEle,that.InDown);
+                }
                 addClass(docs.prev[0],"active");
                 addClass(docs.prev[0],that.InDown);
                 that.onSwipeUp(ranking(that));
@@ -103,8 +105,14 @@ var Leaflet;
                 //下一页
                 var docs=ranking(that);
                 removeClass(docs.current[0],"active");
-                removeArrClass(that.pages,that.InUp);
-                removeArrClass(that.pages,that.InDown);                 
+                var InUpEle=document.querySelectorAll("."+that.InUp);
+                var InDownEle=document.querySelectorAll("."+that.InDown);
+                if(InUpEle.length>0){
+                    removeArrClass(InUpEle,that.InUp);
+                }
+                if(InDownEle.length>0){
+                    removeArrClass(InDownEle,that.InDown);
+                }               
                 addClass(docs.next[0],"active");
                 addClass(docs.next[0],that.InUp);
                 that.onSwipeDown(ranking(that));
@@ -126,11 +134,7 @@ var Leaflet;
         document.getElementsByTagName('head')[0].appendChild(style);
         return style.sheet;
     }
-    //阻止默认事件
-    function  preventDefault(e){
-        e.preventDefault();
-        return;
-    }
+
     //addClass removeClass hasClass
     function addClass(o,c) {
         var o_class=o.className,blank=(o_class != "")? " ":"";
@@ -152,6 +156,14 @@ var Leaflet;
     }
     //排位
     function ranking(that){
+        // var nextTempEle=document.querySelectorAll(".next");
+        // var prevTempEle=document.querySelectorAll(".prev");
+        // if(nextTempEle.length>0){
+        //     removeArrClass(nextTempEle,"next");
+        // }
+        // if(prevTempEle.length>0){
+        //     removeArrClass(prevTempEle,"prev");
+        // }  
         removeArrClass(that.pages,"next");
         removeArrClass(that.pages,"prev");
         var current=getDoc(".active"),

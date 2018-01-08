@@ -56,9 +56,9 @@
                
 
 .up{
-    animation: zoomInUp 0.8s;
+    animation: zoomInUp 0.7s;
 }
 
 .down{
-    animation: zoomInDown 0.8s;
+    animation: zoomInDown 0.7s;
 }
