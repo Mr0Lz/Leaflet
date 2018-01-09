@@ -4,51 +4,109 @@
     outline: none;
     border: none;
 }
-/* 自定义换页动画 */
-@-webkit-keyframes zoomInUp{
+html{font-size:16px;}
+body{font-family:Helvetica;}
+.container div:nth-child(1){
+    background: url(./../public/page1_bg.png)  no-repeat;
+    background-size:100% 100%;
+    display: table;
+}
+.container div:nth-child(1) div{
+    display: table-cell;
+    vertical-align: middle;
+    color: #2c4c71;
 
+}
+.slogan{
+    -webkit-animation:zoomIn 0.8s;
+    animation:zoomIn 0.8s;
+}
+.container div:nth-child(1) div p{
+    font-size: 1.6rem;
+    text-align: center;
+}
+.container div:nth-child(1) div span{
+    position: relative;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    font-size: 1.4rem;
+}
+@-webkit-keyframes zoomIn{
     from {
         opacity: 0;
-        -webkit-transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
-        transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
-        -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-        animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+        -webkit-transform: scale3d(1.2, 1.2, 1.2);
+        transform: scale3d(1.2, 1.2, 1.2);
+    }
+    50% {
+        opacity: 1;
+    }
+    }
+/* 自定义换页动画 */
+@-webkit-keyframes bounceInDown{
+
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0);
     }
     60% {
         opacity: 1;
-        -webkit-transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
-        transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
-        -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-        animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+    }
+    to {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@-webkit-keyframes bounceInUp{
+
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+        transform: translate3d(0, 3000px, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
     }
-
-    @-webkit-keyframes zoomInDown{
-
-        from {
-            opacity: 0;
-            -webkit-transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0);
-            transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0);
-            -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-            animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-        }
-        60% {
-            opacity: 1;
-            -webkit-transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
-            transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
-            -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-            animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
-        }
-        }
-
-        
-
 .up{
-    -webkit-animation: zoomInUp 0.8s;
-    animation: zoomInUp 0.8s;
+    -webkit-animation: bounceInUp 1s;
+    animation: bounceInUp 1s;
 }
 
 .down{
-    -webkit-animation: zoomInDown 0.8s;
-    animation: zoomInDown 0.8s;
+    -webkit-animation: bounceInDown 1s;
+    animation: bounceInDown 1s;
 }
