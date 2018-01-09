@@ -1,32 +1,14 @@
 var Leaflet;
 !(function(){
     function leaflet(){
-        addEvent(this,document,"touchstart",function(current,that,e){
-            e.preventDefault();
-            return;
-        });
-        addEvent(this,document,"touchmove",function(current,that,e){
-            e.preventDefault();
-            return;
-        });
         this.styleSheet=createStyle();
         this.rlueL=0;
         inserCss(this,"html,body","width: 100%;height: 100%;",0);
-        inserCss(this,".page","opacity: 0;-webkit-transition:all 0.3s;transition:all 0.5s;",1);
+        inserCss(this,".page","opacity: 0;",1);
         inserCss(this,".active","top:0;opacity:1;z-index:9999;",2);
         inserCss(this,".prev","top:-100%;opacity:1;z-index:999;",3);
         inserCss(this,".next","top:100%;opacity:1;z-index:999;",4);
     }
-    function l(){
-        var array=Array.prototype.slice.call(arguments);
-        for (let index = 0; index < array.length; index++) {
-            const element = array[index];
-            console.log(element,index+"次");
-        }
-    }
-    leaflet.prototype.init=_init;
-
-    Leaflet=new leaflet();
 //初始化函数
     function _init(opt){
         if(opt.InUp===undefined&&opt.InDown===undefined){
@@ -38,14 +20,15 @@ var Leaflet;
         addStyle([this.doc],"position:relative;width:100%;height:100%;overflow:hidden;");
         this.pages=getPage(this.doc.childNodes);
         this.pageL=this.pages.length-1;
-        addStyle(this.pages,"position:absolute;width:100%;height:100%;");
+        addArrClass(this.pages,"page");        
         addClass(this.pages[0],"active");
-        addArrClass(this.pages,"page");
+        ranking(this);        
+        addStyle(this.pages,"position:absolute;width:100%;height:100%;");        
         this.onSwipeUp=opt.onSwipeUp||function(){};
         this.onSwipeDown=opt.onSwipeDown||function(){};
-        ranking(this);
         swipe(this);
-        if(opt.music){musicInit(opt.music);}
+        if(opt.music){musicInit(opt.music,this);}
+        if(opt.progress){this.progress=progress(this);}
     }
 //获取doc
     function getDoc(ele){
@@ -77,13 +60,16 @@ var Leaflet;
 //滑动手势
     function swipe(that){
         var start=end=null;
-        addEvent(that,that.doc,"touchstart",function(current,that,e){
+        addEvent(that,document,"touchstart",function(current,that,e){
+            e.preventDefault();
             if(e.touches.length===1){start=e.touches[0].clientY;}else{start=null;}
         });
-        addEvent(that,that.doc,"touchmove",function(current,that,e){
+        addEvent(that,document,"touchmove",function(current,that,e){
+            e.preventDefault();
             if(e.touches.length===1){end=e.touches[0].clientY;}else{end=null;}
         });
-        addEvent(that,that.doc,"touchend",function(current,that,e){
+        addEvent(that,document,"touchend",function(current,that,e){
+            e.preventDefault();
             // 判断手势
             if(end===null||start===null){return ;}
             if(Math.abs(end-start)>30&&end-start>0){
@@ -101,6 +87,9 @@ var Leaflet;
                 addClass(docs.prev[0],"active");
                 addClass(docs.prev[0],that.InDown);
                 that.onSwipeUp(ranking(that));
+                if(that.progress){
+                    that.progress.style.width=((docs.prev[1])/that.pageL)*100+"%";
+                }
             }else if(Math.abs(end-start)>30&&end-start<0){
                 //下一页
                 var docs=ranking(that);
@@ -116,6 +105,9 @@ var Leaflet;
                 addClass(docs.next[0],"active");
                 addClass(docs.next[0],that.InUp);
                 that.onSwipeDown(ranking(that));
+                if(that.progress){
+                    that.progress.style.width=((docs.next[1])/that.pageL)*100+"%";
+                }
             }
             start=end=null;
         });
@@ -191,10 +183,36 @@ var Leaflet;
         inserCss(that,"@-webkit-keyframes fadeInDown","from {opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0);}to {opacity: 1;-webkit-transform: none;transform: none;}",that.rlueL+1);
     }
     //开启背景音乐
-    function musicInit(opt){
+    function musicInit(opt,that){
         if(opt.src){
-            
+            inserCss(that,"@-webkit-keyframes rotate","0%{-webkit-transform: rotate(0deg);transform: rotate(0deg);} 100%{-webkit-transform: rotate(360deg);transform: rotate(360deg);}",that.rlueL+1);            
+            inserCss(that,".r","-webkit-animation: rotate 1.2s linear infinite;animation: rotate 1.2s linear infinite;",that.rlueL+1);
+            var div=document.createElement("div");
+            var audio =document.createElement("audio");
+            addStyle([div],"background-image:url("+opt.icon+");background-size:contain;background-repeat:no-repeat;width:30px;height:30px;position:absolute;top:8%;right:10%;z-index:9999;");
+            div.className="r";
+            addStyle([audio],"display:none");
+            if(!opt.autoPlay){removeClass(div,"r");}
+            audio.autoplay=opt.autoPlay;
+            audio.src=opt.src;
+            audio.loop=true;
+            addEvent(that,div,"touchstart",function(div){
+                removeClass(div,"r");
+                if(audio.paused===true){audio.play();addClass(div,"r");}else{audio.pause();}
+            });
+            div.appendChild(audio);
+            document.body.appendChild(div);
         }
         return
-    }        
+    }
+    //进度条
+    function progress(that){
+        inserCss(that,".progress","position:absolute;bottom:0;background:#08a1ef;height:1%;-webkit-transition:all 0.4s;transition:all 0.4s;z-index:999999",that.rlueL+1);
+        var div=document.createElement("div");
+        div.className="progress";
+        document.body.appendChild(div);
+        return div;
+    }
+    leaflet.prototype.init=_init;
+    Leaflet=new leaflet();
 })(window,document)

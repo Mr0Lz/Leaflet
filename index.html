@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/index.js"></script>
+    <script src="node_modules/eruda/eruda.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>        
     <title>宣传页</title>
 </head>
 <body>
@@ -31,10 +31,19 @@
                   InUp:"up",//下一页css3动画样式
                   InDown:"down",//上一页css3动画样式
                   music:{//背景音乐,默认不设置
-                    src:"\public\bgm.mp3",
-                    icon:"\public\bgmBtn-icon.svg",
-                    autoPlay:true,
-                  }
+                    src:"public/bgm.mp3",
+                    icon:"public/bgmBtn-icon.svg",
+                    autoPlay:false,
+                  },
+                  progress:true//进度条
                 });
 </script>
+<!-- <script>
+var el = document.createElement('div');
+document.body.appendChild(el);
+eruda.init({
+    container: el,
+    tool: ['console', 'elements']
+});
+</script> -->
 </html>
