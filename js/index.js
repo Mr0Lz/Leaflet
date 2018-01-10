@@ -3,6 +3,8 @@ var Leaflet;
     function leaflet(){
         this.styleSheet=createStyle();
         this.rlueL=0;
+        this.flage=null;
+        this.bindEle=null;
         inserCss(this,"html,body","width: 100%;height: 100%;",0);
         inserCss(this,".page","opacity: 0;",1);
         inserCss(this,".active","top:0;opacity:1;z-index:9999;",2);
@@ -27,6 +29,7 @@ var Leaflet;
         this.onSwipeUp=opt.onSwipeUp||function(){};
         this.onSwipeDown=opt.onSwipeDown||function(){};
         swipe(this);
+        animationEnd(this);
         if(opt.music){musicInit(opt.music,this);}
         if(opt.progress){this.progress=progress(this);}
     }
@@ -86,7 +89,8 @@ var Leaflet;
                 }
                 addClass(docs.prev[0],"active");
                 addClass(docs.prev[0],that.InDown);
-                that.onSwipeUp(ranking(that));
+                that.bindEle=ranking(that);
+                that.flage="down";                                
                 if(that.progress){
                     that.progress.style.width=((docs.prev[1])/that.pageL)*100+"%";
                 }
@@ -104,7 +108,8 @@ var Leaflet;
                 }               
                 addClass(docs.next[0],"active");
                 addClass(docs.next[0],that.InUp);
-                that.onSwipeDown(ranking(that));
+                that.bindEle=ranking(that);
+                that.flage="up";                                
                 if(that.progress){
                     that.progress.style.width=((docs.next[1])/that.pageL)*100+"%";
                 }
@@ -212,6 +217,19 @@ var Leaflet;
         div.className="progress";
         document.body.appendChild(div);
         return div;
+    }
+    //动画事件
+    function animationEnd(that){
+        for (var i = 0; i < that.pages.length; i++) {
+            addEvent(that,that.pages[i],"animationend",function(){action(that);});
+            addEvent(that,that.pages[i],"webkitAnimationEnd",function(){action(that);});
+        }
+        function action(that){
+            switch(that.flage){
+                case "up" :that.onSwipeUp(that.bindEle);break;
+                case "down":that.onSwipeDown(that.bindEle);break;             
+            }  
+        }
     }
     leaflet.prototype.init=_init;
     Leaflet=new leaflet();
