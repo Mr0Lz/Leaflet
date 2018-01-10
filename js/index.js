@@ -57,6 +57,7 @@ var Leaflet;
             ele.addEventListener(type,function(e){
                 var e=e||window.event;
                 var current=e.srcElement||e.target;
+                e.stopPropagation();
                 fn(current,that,e);
             },false);
     }
@@ -221,8 +222,13 @@ var Leaflet;
     //动画事件
     function animationEnd(that){
         for (var i = 0; i < that.pages.length; i++) {
-            addEvent(that,that.pages[i],"animationend",function(){action(that);});
-            addEvent(that,that.pages[i],"webkitAnimationEnd",function(){action(that);});
+            var page=that.pages[i]
+            addEvent(that,that.pages[i],"animationend",function(current,that,e){
+                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that);}else{return;}
+               });
+            addEvent(that,that.pages[i],"webkitAnimationEnd",function(current,that,e){
+                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that);}else{return;}
+              });
         }
         function action(that){
             switch(that.flage){
