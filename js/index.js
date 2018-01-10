@@ -26,9 +26,11 @@ var Leaflet;
         addClass(this.pages[0],"active");
         ranking(this);        
         addStyle(this.pages,"position:absolute;width:100%;height:100%;");        
-        this.onSwipeUp=opt.onSwipeUp||function(){};
-        this.onSwipeDown=opt.onSwipeDown||function(){};
         swipe(this);
+        this.onSwipeUpEnd=opt.onSwipeUpEnd||function(){};
+        this.onSwipeDownEnd=opt.onSwipeDownEnd||function(){};
+        this.onSwipeUpStart=opt.onSwipeUpStart||function(){};
+        this.onSwipeDownStart=opt.onSwipeDownStart||function(){};
         animationEnd(this);
         if(opt.music){musicInit(opt.music,this);}
         if(opt.progress){this.progress=progress(this);}
@@ -224,16 +226,29 @@ var Leaflet;
         for (var i = 0; i < that.pages.length; i++) {
             var page=that.pages[i]
             addEvent(that,that.pages[i],"animationend",function(current,that,e){
-                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that);}else{return;}
+                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"end");}else{return;}
+               });
+            addEvent(that,that.pages[i],"animationstart",function(current,that,e){
+                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"start");}else{return;}
                });
             addEvent(that,that.pages[i],"webkitAnimationEnd",function(current,that,e){
-                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that);}else{return;}
+                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"end");}else{return;}
+              });
+              addEvent(that,that.pages[i],"webkitAnimationStart",function(current,that,e){
+                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"start");}else{return;}
               });
         }
-        function action(that){
-            switch(that.flage){
-                case "up" :that.onSwipeUp(that.bindEle);break;
-                case "down":that.onSwipeDown(that.bindEle);break;             
+        function action(that,flage){
+            if(flage==="end"){
+                switch(that.flage){
+                    case "up" :that.onSwipeUpEnd(that.bindEle);break;
+                    case "down":that.onSwipeDownEnd(that.bindEle);break;             
+                }
+            }else{
+                switch(that.flage){
+                    case "up" :that.onSwipeUpStart(that.bindEle);break;
+                    case "down":that.onSwipeDownStart(that.bindEle);break;             
+                } 
             }  
         }
     }

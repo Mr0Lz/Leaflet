@@ -18,13 +18,19 @@
 </body>
 <script>
     Leaflet.init({doc:".container",//内容容器
-                  onSwipeUp:function(ele){//上一页
-                    //{prev:[prevEle,prev],上一页的元素,以及下标
-                    //current:[current,currentIndex],//当前页的元素以及下标
-                    //next:[nextEle,next]}//下一页的元素以及下标
-                    //可以用下标判断当前是哪一页来执行换页显示时的动画
+                //{prev:[prevEle,prev],上一页的元素,以及下标
+                //current:[current,currentIndex],//当前页的元素以及下标
+                //next:[nextEle,next]}//下一页的元素以及下标
+                //可以用下标判断当前是哪一页来执行换页显示时的动画
+                  onSwipeUpStart:function(ele){//上一页动画执行之前
+
                   },
-                  onSwipeDown:function(ele){//下一页
+                  onSwipeDownStart:function(ele){//下一页动画执行之前
+
+                  },
+                  onSwipeUpEnd:function(ele){//上一页动画执行之后 
+                  },
+                  onSwipeDownEnd:function(ele){//上一页动画执行之后
                   },
                   //支持animate.css  等css3第三方的动画库
                   //必需同时设置,默认fadeInUp,fadeInDown效果
