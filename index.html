@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <!-- <script src="node_modules/eruda/eruda.min.js"></script> -->
-    <!-- <script src="http://192.168.0.48:8080/target/target-script-min.js#anonymous"></script> -->
     <script type="text/javascript" src="js/index.js"></script>        
     <title>宣传页</title>
 </head>
@@ -13,15 +11,70 @@
     <div class="container">
         <div class="element-box-1">
             <div class="slogan">
-            <p class="zoomIn">深圳健康网.健康深圳APP</p>
-            <span class="zoomIn">— 助力“智慧健康”</span>
+            <p>深圳健康网.健康深圳APP</p>
+            <span >— 助力“智慧健康”</span>
             </div>
         </div>
-        <div>22222</div>
-        <div>22222</div>
-        <div>22222</div>
-        <div>22222</div>
-        <div>22222</div>
+        <div class="element-box-2">
+            <div class="element-box-2-contents">
+                <p class="title">
+                    <span class="index">1</span><span class="title-text">平台背景</span>
+                </p>
+                <p class="text">建设全市统一的市民健康服务平台;构建"一户一网"信息惠民服务体系</p>
+                <img src="public/page_2.png"  class="page_2_1" alt="">
+                <img src="public/page_2_2.png" class="page_2_2" alt="">
+                <div class="bottom-bg"></div>
+            </div> 
+        </div>
+        <div class="element-box-3">
+                <div class="element-box-3-contents" style="overflow:hidden;">
+                        <p class="title">
+                            <span class="index">2</span><span class="title-text">建设背景（正企协同﹑共建共享）</span>
+                        </p>
+                        <div class="img-row">
+                        <img src="public/chaosuan.png"  class="page_3_1" alt="">
+                        <img src="public/xinxi.png" class="page_3_2 " alt="">
+                        <img src="public/xky.png" class="page_3_3" alt="">
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="public/yun.png" class="img-center" alt="">
+                        </div>
+                        <img src="public/page_3_bottom.png" style="width: 100%;" alt="">
+                    </div> 
+        </div>
+        <div class="element-box-s">
+                <div class="element-box-s-contents">
+                        <p class="title">
+                                <span class="index">3</span><span class="title-text">平台展示</span>
+                        </p>
+                        <img src="public/zoominL.png" class="zoominL" alt="">
+                        <img src="public/zomminR.png  " class="zoominR"  alt="">
+                </div>
+        </div>
+        <div class="element-box-5">
+            <div class="element-box-5-contents">
+                <p class="title">
+                        <span class="index">4</span><span class="title-text">就医全流程/云药房</span>
+                </p>
+                <img src="public/quanliucheng.png" class="rotateLeft" alt="">
+                <img src="public/yunyaofang.png  " class="rotateRight"  alt="">
+            </div>
+        </div>
+        <div class="element-box-6">
+            <div class="element-box-6-contents">
+                <p class="title">
+                    <span class="index">5</span><span class="title-text">健康管理/健康档案</span>
+                </p>
+                <p class="text">健康监测,评估,计划,全面的健康服务,您身边的健康管家!</p>
+                <p class="text">记录管理全名健康</p>
+                <div  class="img-box">
+                <img src="public/p1.png" class="p1" alt="">
+                <img src="public/p2.png" class="p2" alt="">
+                <img src="public/p3.png" class="p3" alt="">
+                <img src="public/p4.png" class="p4" alt="">
+                </div>
+            </div> 
+        </div>
         <div>22222</div>
         <div>22222</div>
         <div>
@@ -37,58 +90,129 @@
         </div>
     </div>
 </body>
-<!-- <script>
-var el = document.createElement('div');
-document.body.appendChild(el);
-eruda.init({
-    container: el,
-    tool: ['console', 'elements']
-});
-</script> -->
 <script>
-    var arrow=document.createElement("div");
-    addClass(arrow,"arrow");
-    document.body.appendChild(arrow);
     var sloganP=document.querySelector(".slogan p");
     var spanSpan=document.querySelector(".slogan span");
-    // sloganP.addEventListener("animationend",function(){
-    //     removeClass(sloganP,'zoomIn');
-    // },false);
-    // spanSpan.addEventListener("animationend",function(){
-    //     removeClass(spanSpan,'zoomIn');
-    // },false);
+    var text=document.querySelectorAll(".text");
+    var arrow=document.createElement("div");
+    arrow.className="arrow";
+    document.body.appendChild(arrow);
+    var page_2_1=document.querySelector(".page_2_1");
+    var page_2_2=document.querySelector(".page_2_2");
+    var page_3_1=document.querySelector(".page_3_1");
+    var page_3_2=document.querySelector(".page_3_2");
+    var page_3_3=document.querySelector(".page_3_3");
+    var page_3_4=document.querySelector(".img-center");
+    var zoominL=document.querySelector(".zoominL");
+    var zoominR=document.querySelector(".zoominR");
+    var rotateLeft=document.querySelector(".rotateLeft");
+    var rotateRight=document.querySelector(".rotateRight");
+    var p1=document.querySelector(".p1");
+    var p2=document.querySelector(".p2");
+    var p3=document.querySelector(".p3");
+    var p4=document.querySelector(".p4");
+    animationEnd(sloganP);
+    animationEnd(spanSpan);
+    animationEnd(text[0]);
+    animationEnd(page_2_1);
+    animationEnd(page_2_2);
+    animationEnd(page_3_1);
+    animationEnd(page_3_2);
+    animationEnd(page_3_3);        
+    animationEnd(page_3_4);
     Leaflet.init({doc:".container",//内容容器
                 //{prev:[prevEle,prev],上一页的元素,以及下标
                 //current:[current,currentIndex],//当前页的元素以及下标
                 //next:[nextEle,next]}//下一页的元素以及下标
                 //可以用下标判断当前是哪一页来执行换页显示时的动画
                   onSwipeUpStart:function(ele){//动画开始前
-                    if(ele.current[1]===0){
-                        removeClass(sloganP,"zoomIn");
-                        removeClass(spanSpan,"zoomIn");
+                    if(ele.current[1]===3){
+                        removeClass(zoominL,"zoominLAni");
+                        removeClass(zoominR,"zoominRAni");
+                    }else if(ele.current[1]===4){
+                        removeClass(rotateLeft,"rotateLeftAni");
+                        removeClass(rotateRight,"rotateRightAni");
+                        removeClass(p1,"p1Ani");
+                        removeClass(p2,"p2Ani");
+                        removeClass(p3,"p3Ani");
+                        removeClass(p4,"p4Ani");
+                    }else if(ele.current[1]===6){
+                        removeClass(p1,"p1Ani");
+                        removeClass(p2,"p2Ani");
+                        removeClass(p3,"p3Ani");
+                        removeClass(p4,"p4Ani");
                     }
                   },
                   onSwipeDownStart:function(ele){//动画开始前
-                    if(ele.current[1]===0){
-                        removeClass(sloganP,"zoomIn");
-                        removeClass(spanSpan,"zoomIn");
+                    if(ele.current[1]===3){
+                        removeClass(zoominL,"zoominLAni");
+                        removeClass(zoominR,"zoominRAni");
+                    }else if(ele.current[1]===4){
+                        removeClass(rotateLeft,"rotateLeftAni");
+                        removeClass(rotateRight,"rotateRightAni");
+                        removeClass(p1,"p1Ani");
+                        removeClass(p2,"p2Ani");
+                        removeClass(p3,"p3Ani");
+                        removeClass(p4,"p4Ani");
+                    }else if(ele.current[1]===6){
+                        removeClass(p1,"p1Ani");
+                        removeClass(p2,"p2Ani");
+                        removeClass(p3,"p3Ani");
+                        removeClass(p4,"p4Ani");
                     }
+
                   },
                   onSwipeUpEnd:function(ele){//上一页 动画结束
                     if(ele.current[1]===0){
-                            sloganP.style.display="block";
-                            spanSpan.style.display="block";
-                            addClass(sloganP,"zoomIn");
-                            addClass(spanSpan,"zoomIn");
+                            addAni(sloganP,"zoomIn 0.8s");
+                            addAni(spanSpan,"zoomIn 0.8s");
+                    }else if(ele.current[1]===1){
+                            addAni(text[0],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
+                            addAni(page_2_2,"bounceIn 1s linear");
+                            addAni(page_2_1,"bounceIn 1s linear");
+                    }else if(ele.current[1]===2){
+                        addAni(page_3_1," swing 0.8s");
+                        addAni(page_3_2," swing 0.8s");
+                        addAni(page_3_3," swing 0.8s");
+                        addAni(page_3_4," swing 0.8s");
+                    }else if(ele.current[1]===3){
+                        addClass(zoominL,"zoominLAni");
+                        addClass(zoominR,"zoominRAni");
+                    }else if(ele.current[1]===4){
+                        addClass(rotateLeft,"rotateLeftAni");
+                        addClass(rotateRight,"rotateRightAni");
+                    }else if(ele.current[1]===5){
+                        addClass(p1,"p1Ani");
+                        addClass(p2,"p2Ani");
+                        addClass(p3,"p3Ani");
+                        addClass(p4,"p4Ani");
                     }
-                        
                   },
                   onSwipeDownEnd:function(ele){//下一页 动画结束
                     if(ele.current[1]===0){
-                        sloganP.style.display="block";
-                        spanSpan.style.display="block";
-                        addClass(sloganP,"zoomIn");
-                        addClass(spanSpan,"zoomIn");
+                        addAni(sloganP,"zoomIn 0.8s");
+                        addAni(spanSpan,"zoomIn 0.8s");
+
+                    }else if(ele.current[1]===1){
+                            addAni(text[0],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
+                            addAni(page_2_2,"bounceIn 1s linear");
+                            addAni(page_2_1,"bounceIn 1s linear");
+                    }else if(ele.current[1]===2){
+                        addAni(page_3_1,"swing 0.8s");
+                        addAni(page_3_2,"swing 0.8s");
+                        addAni(page_3_3,"swing 0.8s");
+                        addAni(page_3_4,"swing 0.8s");
+                    }else if(ele.current[1]===3){
+                        addClass(zoominL,"zoominLAni");
+                        addClass(zoominR,"zoominRAni");
+                    }else if(ele.current[1]===4){
+                        addClass(rotateLeft,"rotateLeftAni");
+                        addClass(rotateRight,"rotateRightAni");
+                    }else if(ele.current[1]===5){
+                        addClass(p1,"p1Ani");
+                        addClass(p2,"p2Ani");
+                        addClass(p3,"p3Ani");
+                        addClass(p4,"p4Ani");
                     }
                   },
                   //支持animate.css  等css3第三方的动画库
@@ -104,29 +228,42 @@ eruda.init({
                 });
 
 
-                
+function animationEnd(that,fn){
+    if(fn===undefined){fn=true;}
+    addEvent(that,that,"animationend",function(current,that,e){
+        if(current===that){reAni(that);fn||fn();}
+    });
+    addEvent(that,that,"webkitAnimationEnd",function(current,that,e){
+        if(current===that){reAni(that);fn||fn();}
+    });
+}
+function addEvent(that,ele,type,fn){
+    ele.addEventListener(type,function(e){
+    var e=e||window.event;
+    var current=e.srcElement||e.target;
+    e.stopPropagation();
+        fn(current,that,e);
+    },false);
+}     
+function addAni(ele,css){
+    ele.style.animation=css;
+    ele.style.WebkitAnimation=css;
+}                
+function reAni(ele){
+    ele.style.animation="";
+    ele.style.WebkitAnimation=""; 
+}
 function addClass(o,c) {
-    var o_class=o.className,blank=(o_class != "")? " ":"";
-    added=o_class+blank+c;
-    o.className=added;
-}
-function addArrClass(arr,c){
-    for (var i=0; i<arr.length;i++) {addClass(arr[i],c);}
-}
+        var o_class=o.className,blank=(o_class != "")? " ":"";
+        added=o_class+blank+c;
+        o.className=added;
+    }
 function removeClass(o,c) {
-    var o_class=" "+o.className+" ";
-    o_class=o_class.replace(/(\s+)/gi," ");
-    removed = o_class.replace(' '+c+' ', ' ');
-    removed = removed.replace(/(^\s+)|(\s+$)/g, '');
-    o.className=removed;
-}
-function removeArrClass(arr,c){
-    for (var i=0; i<arr.length;i++) {removeClass(arr[i],c);}
-}
-function hasClass(o,c) {
-	var o_class=o.className,c_lst=o_class.split(/\s+/),x=0;
-	for(x in c_lst){if(c_lst[x]==c){return true;}}
-	return false;
-}
+        var o_class=" "+o.className+" ";
+        o_class=o_class.replace(/(\s+)/gi," ");
+        removed = o_class.replace(' '+c+' ', ' ');
+        removed = removed.replace(/(^\s+)|(\s+$)/g, '');
+        o.className=removed;
+    }
 </script>
 </html>

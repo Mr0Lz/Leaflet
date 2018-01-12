@@ -197,7 +197,7 @@ var Leaflet;
             inserCss(that,".r","-webkit-animation: rotate 1.2s linear infinite;animation: rotate 1.2s linear infinite;",that.rlueL+1);
             var div=document.createElement("div");
             var audio =document.createElement("audio");
-            addStyle([div],"background-image:url("+opt.icon+");background-size:contain;background-repeat:no-repeat;width:30px;height:30px;position:absolute;top:8%;right:10%;z-index:9999;");
+            addStyle([div],"background-image:url("+opt.icon+");background-size:contain;background-repeat:no-repeat;width:30px;height:30px;position:absolute;top:6%;right:10%;z-index:9999;");
             div.className="r";
             addStyle([audio],"display:none");
             if(!opt.autoPlay){removeClass(div,"r");}
