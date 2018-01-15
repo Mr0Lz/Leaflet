@@ -109,30 +109,30 @@
     </div>
 </body>
 <script>
-    var sloganP=document.querySelector(".slogan p");
-    var spanSpan=document.querySelector(".slogan span");
-    var text=document.querySelectorAll(".text");
-    var arrow=document.createElement("div");
+    var sloganP=document.querySelector(".slogan p"),
+    spanSpan=document.querySelector(".slogan span"),
+    text=document.querySelectorAll(".text"),
+    arrow=document.createElement("div"),
+    page_2_1=document.querySelector(".page_2_1"),
+    page_2_2=document.querySelector(".page_2_2"),
+    page_3_1=document.querySelector(".page_3_1"),
+    page_3_2=document.querySelector(".page_3_2"),
+    page_3_3=document.querySelector(".page_3_3"),
+    page_3_4=document.querySelector(".img-center"),
+    zoominL=document.querySelector(".zoominL"),
+    zoominR=document.querySelector(".zoominR"),
+    rotateLeft=document.querySelector(".rotateLeft"),
+    rotateRight=document.querySelector(".rotateRight"),
+    p1=document.querySelector(".p1"),
+    p2=document.querySelector(".p2"),
+    p3=document.querySelector(".p3"),
+    p4=document.querySelector(".p4"),
+    flipIn1=document.querySelector(".flipIn1"),
+    flipIn2=document.querySelector(".flipIn2"),
+    erweima=document.querySelector(".erweima"),
+    bounce=document.querySelectorAll(".bounce");
     arrow.className="arrow";
     document.body.appendChild(arrow);
-    var page_2_1=document.querySelector(".page_2_1");
-    var page_2_2=document.querySelector(".page_2_2");
-    var page_3_1=document.querySelector(".page_3_1");
-    var page_3_2=document.querySelector(".page_3_2");
-    var page_3_3=document.querySelector(".page_3_3");
-    var page_3_4=document.querySelector(".img-center");
-    var zoominL=document.querySelector(".zoominL");
-    var zoominR=document.querySelector(".zoominR");
-    var rotateLeft=document.querySelector(".rotateLeft");
-    var rotateRight=document.querySelector(".rotateRight");
-    var p1=document.querySelector(".p1");
-    var p2=document.querySelector(".p2");
-    var p3=document.querySelector(".p3");
-    var p4=document.querySelector(".p4");
-    var flipIn1=document.querySelector(".flipIn1");
-    var flipIn2=document.querySelector(".flipIn2");
-    var erweima=document.querySelector(".erweima");
-    var bounce=document.querySelectorAll(".bounce");
     animationEnd(sloganP);
     animationEnd(spanSpan);
     animationEnd(text[0]);
@@ -150,102 +150,63 @@
                 //next:[nextEle,next]}//下一页的元素以及下标
                 //可以用下标判断当前是哪一页来执行换页显示时的动画
                   onSwipeUpStart:function(ele){//动画开始前
-                    if(ele.current[1]===3){
-                        removeClass(zoominL,"zoominLAni");
-                        removeClass(zoominR,"zoominRAni");
-                    }else if(ele.current[1]===4){
-                        removeClass(rotateLeft,"rotateLeftAni");
-                        removeClass(rotateRight,"rotateRightAni");
-                        removeClass(p1,"p1Ani");
-                        removeClass(p2,"p2Ani");
-                        removeClass(p3,"p3Ani");
-                        removeClass(p4,"p4Ani");
-                    }else if(ele.current[1]===6){
-                        removeClass(p1,"p1Ani");
-                        removeClass(p2,"p2Ani");
-                        removeClass(p3,"p3Ani");
-                        removeClass(p4,"p4Ani");
-                        removeClass(flipIn1,"flipInAni");
-                        removeClass(flipIn2,"flipInAni");
-                        removeClass(erweima,"erweimaAni");
-                        removeClass(bounce[0],"bounceInAni");
-                        removeClass(bounce[1],"bounceInAni");
-                        removeClass(bounce[2],"bounceInAni");
-                    }else if(ele.current[1]===8){
-                        removeClass(erweima,"erweimaAni");
-                        removeClass(bounce[0],"bounceInAni");
-                        removeClass(bounce[1],"bounceInAni");
-                        removeClass(bounce[2],"bounceInAni");
-                    }
+                    StartCallBack(ele)
                   },
                   onSwipeDownStart:function(ele){//动画开始前
-                    if(ele.current[1]===3){
-                        removeClass(zoominL,"zoominLAni");
-                        removeClass(zoominR,"zoominRAni");
-                    }else if(ele.current[1]===4){
-                        removeClass(rotateLeft,"rotateLeftAni");
-                        removeClass(rotateRight,"rotateRightAni");
-                        removeClass(p1,"p1Ani");
-                        removeClass(p2,"p2Ani");
-                        removeClass(p3,"p3Ani");
-                        removeClass(p4,"p4Ani");
-                    }else if(ele.current[1]===6){
-                        removeClass(p1,"p1Ani");
-                        removeClass(p2,"p2Ani");
-                        removeClass(p3,"p3Ani");
-                        removeClass(p4,"p4Ani");
-                        removeClass(flipIn1,"flipInAni");
-                        removeClass(flipIn2,"flipInAni");
-                        removeClass(erweima,"erweimaAni");
-                        removeClass(bounce[0],"bounceInAni");
-                        removeClass(bounce[1],"bounceInAni");
-                        removeClass(bounce[2],"bounceInAni");
-                    }else if(ele.current[1]===8){
-                        removeClass(erweima,"erweimaAni");
-                        removeClass(bounce[0],"bounceInAni");
-                        removeClass(bounce[1],"bounceInAni");
-                        removeClass(bounce[2],"bounceInAni");
-                    }
+                    StartCallBack(ele)
 
                   },
                   onSwipeUpEnd:function(ele){//上一页 动画结束
-                    if(ele.current[1]===0){
-                            addAni(sloganP,"zoomIn 0.8s");
-                            addAni(spanSpan,"zoomIn 0.8s");
-                    }else if(ele.current[1]===1){
-                            addAni(text[0],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
-                            addAni(page_2_2,"bounceIn 1s linear");
-                            addAni(page_2_1,"bounceIn 1s linear");
-                    }else if(ele.current[1]===2){
-                        addAni(page_3_1," swing 0.8s");
-                        addAni(page_3_2," swing 0.8s");
-                        addAni(page_3_3," swing 0.8s");
-                        addAni(page_3_4," swing 0.8s");
-                    }else if(ele.current[1]===3){
-                        addClass(zoominL,"zoominLAni");
-                        addClass(zoominR,"zoominRAni");
-                    }else if(ele.current[1]===4){
-                        addClass(rotateLeft,"rotateLeftAni");
-                        addClass(rotateRight,"rotateRightAni");
-                    }else if(ele.current[1]===5){
-                        addAni(text[1],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
-                        addAni(text[2],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
-                        addClass(p1,"p1Ani");
-                        addClass(p2,"p2Ani");
-                        addClass(p3,"p3Ani");
-                        addClass(p4,"p4Ani");
-                    }else if(ele.current[1]===6){
-                        addClass(flipIn1,"flipInAni");
-                        addClass(flipIn2,"flipInAni");
-                    }else if(ele.current[1]===7){
-                        addClass(erweima,"erweimaAni");
-                        addClass(bounce[0],"bounceInAni");
-                        addClass(bounce[1],"bounceInAni");
-                        addClass(bounce[2],"bounceInAni");
-                    }
+                        EndCallBack(ele);
                   },
                   onSwipeDownEnd:function(ele){//下一页 动画结束
-                    if(ele.current[1]===0){
+                        EndCallBack(ele);
+                  },
+                  //支持animate.css  等css3第三方的动画库
+                  //必需同时设置,默认fadeInUp,fadeInDown效果
+                  InUp:"up",//下一页css3动画样式
+                  InDown:"down",//上一页css3动画样式
+                  music:{//背景音乐,默认不设置
+                    src:"public/bgm.mp3",
+                    icon:"public/bgmBtn-icon.svg",
+                    autoPlay:true,
+                  },
+                  progress:true//进度条
+                });
+
+
+function StartCallBack(ele){
+                        if(ele.current[1]===3){
+                        removeClass(zoominL,"zoominLAni");
+                        removeClass(zoominR,"zoominRAni");
+                    }else if(ele.current[1]===4){
+                        removeClass(rotateLeft,"rotateLeftAni");
+                        removeClass(rotateRight,"rotateRightAni");
+                        removeClass(p1,"p1Ani");
+                        removeClass(p2,"p2Ani");
+                        removeClass(p3,"p3Ani");
+                        removeClass(p4,"p4Ani");
+                    }else if(ele.current[1]===6){
+                        removeClass(p1,"p1Ani");
+                        removeClass(p2,"p2Ani");
+                        removeClass(p3,"p3Ani");
+                        removeClass(p4,"p4Ani");
+                        removeClass(flipIn1,"flipInAni");
+                        removeClass(flipIn2,"flipInAni");
+                        removeClass(erweima,"erweimaAni");
+                        removeClass(bounce[0],"bounceInAni");
+                        removeClass(bounce[1],"bounceInAni");
+                        removeClass(bounce[2],"bounceInAni");
+                    }else if(ele.current[1]===8){
+                        removeClass(erweima,"erweimaAni");
+                        removeClass(bounce[0],"bounceInAni");
+                        removeClass(bounce[1],"bounceInAni");
+                        removeClass(bounce[2],"bounceInAni");
+                    }
+}
+
+function EndCallBack(ele){
+                        if(ele.current[1]===0){
                         addAni(sloganP,"zoomIn 0.8s");
                         addAni(spanSpan,"zoomIn 0.8s");
 
@@ -280,20 +241,7 @@
                         addClass(bounce[1],"bounceInAni");
                         addClass(bounce[2],"bounceInAni");
                     }
-                  },
-                  //支持animate.css  等css3第三方的动画库
-                  //必需同时设置,默认fadeInUp,fadeInDown效果
-                  InUp:"up",//下一页css3动画样式
-                  InDown:"down",//上一页css3动画样式
-                  music:{//背景音乐,默认不设置
-                    src:"public/bgm.mp3",
-                    icon:"public/bgmBtn-icon.svg",
-                    autoPlay:true,
-                  },
-                  progress:true//进度条
-                });
-
-
+}
 function animationEnd(that,fn){
     if(fn===undefined){fn=true;}
     addEvent(that,that,"animationend",function(current,that,e){
