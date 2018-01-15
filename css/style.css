@@ -79,9 +79,10 @@ body{font-family:Helvetica;}
     margin-top: 10rem;
     border-radius: 2rem;
 }
-.element-box-2,.element-box-3,.element-box-s,.element-box-4,.element-box-5{
+.element-box-2,.element-box-3,.element-box-s,.element-box-5,.element-box-6,.element-box-7,.element-box-8{
     background: url(./../public/page_2_bg.png);
     background-size: 100% 100%;
+    overflow: hidden;
 }
 .title{
     margin-top: 3rem;    
@@ -248,54 +249,143 @@ body{font-family:Helvetica;}
     left: 6%;
     z-index: 4;
     opacity: 0;
-    -webkit-transition: opacity 0.3s ;
-    transition: opacity 0.3s ;
 }
 .p2{
     top: 2rem;
     left: 18%;
     z-index: 3;
     opacity: 0;
-    -webkit-transition: opacity 0.3s 0.3s;
-    transition: opacity 0.3s 0.3s;
 }
 .p3{
     top: 4rem;
     left: 38%;
     z-index: 2;
     opacity: 0;
-    -webkit-transition: opacity 0.3s 0.6s;
-    transition: opacity 0.3s 0.6s;
 }
 .p4{
     top: 6rem;
     left: 60%;
     z-index: 1;
     opacity: 0;
-    -webkit-transition: opacity 0.3s 0.9s;
-    transition: opacity 0.3s 0.9s;
 }
 .p1Ani{
-    opacity: 1;
     -webkit-animation: bounceIn 1s ease 0s 1 normal both;
     animation: bounceIn 1s ease 0s 1 normal both;
 }
 .p2Ani{
-opacity: 1;
 -webkit-animation: bounceIn 1s ease 0.5s 1 normal both;
 animation: bounceIn 1s ease 0.5s 1 normal both;
 }
 .p3Ani{
-opacity: 1;
 -webkit-animation: bounceIn 1s ease 1s 1 normal both;
 animation: bounceIn 1s ease 1s 1 normal both;
 }
 .p4Ani{
-opacity: 1;
 -webkit-animation: bounceIn 1s ease 1.5s 1 normal both;
 animation: bounceIn 1s ease 1.5s 1 normal both;
 }
+.element-box-7-contents img{
+    display: block;
+    margin: 2% auto 0 auto;
+    -webkit-transition: -webkit-transform 0.8s;
+    transition: transform 0.8s;
+}
+.flipIn1{
+    opacity: 0;
+width: 50%;
+-webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+}
+.flipIn2{
+    opacity: 0;
+width: 80%;
+-webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+}
+.flipInAni{
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0);
+        transform: perspective(400px) rotate3d(1, 0, 0, 0);
+    opacity: 1;
+}
+.erweima{
+    display: block;    
+    width: 50%;
+    margin: 16% auto;
+    opacity: 0;
+}
+.erweimaAni{
+    -webkit-animation: bounceIn 1s ,rubberBand 1s  1s;
+    animation: bounceIn 1s ,rubberBand 1s  1s;
+    opacity: 1;
+}
+.bounce{
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    opacity: 0;
+}
+.bounceInAni{
+    -webkit-animation: bounceIn 1s ease 0.5s 1 normal both;
+    animation: bounceIn 1s ease 0.5s 1 normal both;
+}
+@-webkit-keyframes rubberBand{
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        -webkit-transform: scale3d(.95, 1.05, 1);
+        transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+        -webkit-transform: scale3d(1.05, .95, 1);
+        transform: scale3d(1.05, .95, 1);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    }
+@-webkit-keyframes flipInX{
 
+    from {
+
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+    }
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+    to {
+        
+    }
+    }
+            
 @-webkit-keyframes jello{
     from, 11.1%, to {
         -webkit-transform: none;

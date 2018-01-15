@@ -75,8 +75,26 @@
                 </div>
             </div> 
         </div>
-        <div>22222</div>
-        <div>22222</div>
+        <div class="element-box-7">
+            <div class="element-box-7-contents">
+                <p class="title">
+                        <span class="index">6</span><span class="title-text">统一支付/网络医院</span>
+                </p>
+                <img src="public/zhifu.png" class="flipIn1"  alt="">
+                <img src="public/wangluo.png  " class="flipIn2"   alt="">
+        </div>
+        </div>
+        <div class="element-box-8">
+            <div class="element-box-8-contents">
+                <p class="title">
+                        <span class="index">7</span><span class="title-text">关注我们</span>
+                </p>
+                <img src="public/erweima.png" class="erweima"  alt="">
+                <p class="bounce">深圳市品医汇信息技术有限公司</p>
+                <p class="bounce">咨询热线:0755-86141202</p>
+                <p class="bounce">地址:深圳市福田中心区爱地大厦西座26楼</p>
+        </div>
+        </div>
         <div>
             <div class="element-box-4">
                 <div class="element-box-4-contents">
@@ -111,9 +129,15 @@
     var p2=document.querySelector(".p2");
     var p3=document.querySelector(".p3");
     var p4=document.querySelector(".p4");
+    var flipIn1=document.querySelector(".flipIn1");
+    var flipIn2=document.querySelector(".flipIn2");
+    var erweima=document.querySelector(".erweima");
+    var bounce=document.querySelectorAll(".bounce");
     animationEnd(sloganP);
     animationEnd(spanSpan);
     animationEnd(text[0]);
+    animationEnd(text[1]);
+    animationEnd(text[2]);
     animationEnd(page_2_1);
     animationEnd(page_2_2);
     animationEnd(page_3_1);
@@ -141,6 +165,17 @@
                         removeClass(p2,"p2Ani");
                         removeClass(p3,"p3Ani");
                         removeClass(p4,"p4Ani");
+                        removeClass(flipIn1,"flipInAni");
+                        removeClass(flipIn2,"flipInAni");
+                        removeClass(erweima,"erweimaAni");
+                        removeClass(bounce[0],"bounceInAni");
+                        removeClass(bounce[1],"bounceInAni");
+                        removeClass(bounce[2],"bounceInAni");
+                    }else if(ele.current[1]===8){
+                        removeClass(erweima,"erweimaAni");
+                        removeClass(bounce[0],"bounceInAni");
+                        removeClass(bounce[1],"bounceInAni");
+                        removeClass(bounce[2],"bounceInAni");
                     }
                   },
                   onSwipeDownStart:function(ele){//动画开始前
@@ -159,6 +194,17 @@
                         removeClass(p2,"p2Ani");
                         removeClass(p3,"p3Ani");
                         removeClass(p4,"p4Ani");
+                        removeClass(flipIn1,"flipInAni");
+                        removeClass(flipIn2,"flipInAni");
+                        removeClass(erweima,"erweimaAni");
+                        removeClass(bounce[0],"bounceInAni");
+                        removeClass(bounce[1],"bounceInAni");
+                        removeClass(bounce[2],"bounceInAni");
+                    }else if(ele.current[1]===8){
+                        removeClass(erweima,"erweimaAni");
+                        removeClass(bounce[0],"bounceInAni");
+                        removeClass(bounce[1],"bounceInAni");
+                        removeClass(bounce[2],"bounceInAni");
                     }
 
                   },
@@ -182,10 +228,20 @@
                         addClass(rotateLeft,"rotateLeftAni");
                         addClass(rotateRight,"rotateRightAni");
                     }else if(ele.current[1]===5){
+                        addAni(text[1],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
+                        addAni(text[2],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
                         addClass(p1,"p1Ani");
                         addClass(p2,"p2Ani");
                         addClass(p3,"p3Ani");
                         addClass(p4,"p4Ani");
+                    }else if(ele.current[1]===6){
+                        addClass(flipIn1,"flipInAni");
+                        addClass(flipIn2,"flipInAni");
+                    }else if(ele.current[1]===7){
+                        addClass(erweima,"erweimaAni");
+                        addClass(bounce[0],"bounceInAni");
+                        addClass(bounce[1],"bounceInAni");
+                        addClass(bounce[2],"bounceInAni");
                     }
                   },
                   onSwipeDownEnd:function(ele){//下一页 动画结束
@@ -209,10 +265,20 @@
                         addClass(rotateLeft,"rotateLeftAni");
                         addClass(rotateRight,"rotateRightAni");
                     }else if(ele.current[1]===5){
+                        addAni(text[1],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
+                        addAni(text[2],"fadeInLeft 1s cubic-bezier(0.84, 1.18, 0.99, 0.99)");
                         addClass(p1,"p1Ani");
                         addClass(p2,"p2Ani");
                         addClass(p3,"p3Ani");
                         addClass(p4,"p4Ani");
+                    }else if(ele.current[1]===6){
+                        addClass(flipIn1,"flipInAni");
+                        addClass(flipIn2,"flipInAni");
+                    }else if(ele.current[1]===7){
+                        addClass(erweima,"erweimaAni");
+                        addClass(bounce[0],"bounceInAni");
+                        addClass(bounce[1],"bounceInAni");
+                        addClass(bounce[2],"bounceInAni");
                     }
                   },
                   //支持animate.css  等css3第三方的动画库
