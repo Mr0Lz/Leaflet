@@ -22,21 +22,25 @@
             //next:[nextEle,next]}//下一页的元素以及下标
             //可以用下标判断当前是哪一页来执行换页显示时的动画
             onSwipeUpStart:function(ele){//上一页动画执行之前
+            
             },
             onSwipeDownStart:function(ele){//下一页动画执行之前
+            
             },
             onSwipeUpEnd:function(ele){//上一页动画执行之后 
+            
             },
             onSwipeDownEnd:function(ele){//上一页动画执行之后
+            
             },
             //支持animate.css  等css3第三方的动画库
             //必需同时设置,默认fadeInUp,fadeInDown效果
-            InUp:"up",//下一页css3动画样式
-            InDown:"down",//上一页css3动画样式
-            music:{//背景音乐,默认不设置
-            src:"public/bgm.mp3",
-            icon:"public/bgmBtn-icon.svg",
-            autoPlay:false,
-            },
-            progress:true//进度条
+                  InUp:"up",//下一页css3动画样式
+                  InDown:"down",//上一页css3动画样式
+                  music:{//背景音乐,默认不设置
+                        src:"public/bgm.mp3",
+                        icon:"public/bgmBtn-icon.svg",
+                        autoPlay:false,
+                  },
+                  progress:true//进度条
             });
