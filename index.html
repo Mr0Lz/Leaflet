@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="node_modules/eruda/eruda.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>        
     <title>宣传页</title>
 </head>
 <body>
     <div class="container" style="font-size:20px">
-        <div class="">11111</div>
-        <div class="">22222</div>
-        <div class="">33333</div>
-        <div class="">44444</div>
+        <div class="">page1</div>
+        <div class="">page2</div>
+        <div class="">page3</div>
+        <div class="">page4</div>
     </div>
 </body>
 <script>
@@ -23,10 +22,8 @@
                 //next:[nextEle,next]}//下一页的元素以及下标
                 //可以用下标判断当前是哪一页来执行换页显示时的动画
                   onSwipeUpStart:function(ele){//上一页动画执行之前
-
                   },
                   onSwipeDownStart:function(ele){//下一页动画执行之前
-
                   },
                   onSwipeUpEnd:function(ele){//上一页动画执行之后 
                   },
@@ -44,12 +41,4 @@
                   progress:true//进度条
                 });
 </script>
-<!-- <script>
-var el = document.createElement('div');
-document.body.appendChild(el);
-eruda.init({
-    container: el,
-    tool: ['console', 'elements']
-});
-</script> -->
 </html>
