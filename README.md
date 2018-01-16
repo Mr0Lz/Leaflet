@@ -12,6 +12,9 @@
 
 然后配置`Leaflet`对象
     
+    
+    
+    
             Leaflet.init({doc:".container",//内容容器
             //四个回调函数的参数
             //{prev:[prevEle,prev],上一页的元素,以及下标
