@@ -197,7 +197,7 @@ var Leaflet;
             inserCss(that,".r","-webkit-animation: rotate 1.2s linear infinite;animation: rotate 1.2s linear infinite;",that.rlueL+1);
             var div=document.createElement("div");
             var audio =document.createElement("audio");
-            addStyle([div],"background-image:url("+opt.icon+");background-size:contain;background-repeat:no-repeat;width:30px;height:30px;position:absolute;top:8%;right:10%;z-index:9999;");
+            addStyle([div],"background-image:url("+opt.icon+");background-size:contain;background-repeat:no-repeat;width:30px;height:30px;position:absolute;top:6%;right:10%;z-index:9999;");
             div.className="r";
             addStyle([audio],"display:none");
             if(!opt.autoPlay){removeClass(div,"r");}
@@ -224,18 +224,14 @@ var Leaflet;
     //动画事件
     function animationEnd(that){
         for (var i = 0; i < that.pages.length; i++) {
-            var page=that.pages[i]
-            addEvent(that,that.pages[i],"animationend",function(current,that,e){
-                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"end");}else{return;}
-               });
-            addEvent(that,that.pages[i],"animationstart",function(current,that,e){
-                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"start");}else{return;}
-               });
-            addEvent(that,that.pages[i],"webkitAnimationEnd",function(current,that,e){
-                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"end");}else{return;}
-              });
-              addEvent(that,that.pages[i],"webkitAnimationStart",function(current,that,e){
-                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,"start");}else{return;}
+              bind(that,that.pages[i],"animationend","end");
+              bind(that,that.pages[i],"animationstart","start");
+              bind(that,that.pages[i],"webkitAnimationEnd","end");
+              bind(that,that.pages[i],"webkitAnimationStart","start");
+        }
+        function bind(that,ele,type,flage){
+             addEvent(that,that.pages[i],type,function(current,that,e){
+                if(that.bindEle!==null&&that.bindEle.current[0]===current){action(that,flage);}else{return;}
               });
         }
         function action(that,flage){
